@@ -1,0 +1,16 @@
+logs/
+runs/
+fitlog_logs/
+examples/data
+examples/pretrained
+**/__pycache__/*
+*.zip
+*.out
+*.pth
+*.tar
+*.log
+*.jpg
+*.npy
+.fitlog
+.fitconfig
+logs

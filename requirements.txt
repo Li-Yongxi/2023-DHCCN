@@ -1,0 +1,11 @@
+faiss==1.7.3
+fitlog==0.9.15
+matplotlib==3.6.2
+numpy==1.23.4
+numpy==1.24.0
+Pillow==9.3.0
+Pillow==10.1.0
+scikit_learn==1.2.0
+scipy==1.11.4
+torch==1.12.1+cu113
+torchvision==0.13.1+cu113
