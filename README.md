@@ -3,7 +3,7 @@
 This repository contains the author's implementation in PyTorch for the TCSVT paper "Distribution-Guided Hierarchical Calibration Contrastive Network for Unsupervised Person Re-Identification"
 
 **Our unified framework**
-![framework](doc/framework.svg)
+![framework](doc/framework.png)
 
 # Requirements
 ## installation
