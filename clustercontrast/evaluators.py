@@ -41,7 +41,7 @@ def conf_eval_gauss(loss):
     return prob_V
 
 
-def extract_features(model, data_loader, print_freq=50):
+def extract_features(model, data_loader, print_freq=50, isCam=False):
     model.eval()
     batch_time = AverageMeter()
     data_time = AverageMeter()
@@ -60,7 +60,6 @@ def extract_features(model, data_loader, print_freq=50):
         for i, (imgs, fnames, pids, _, _) in enumerate(data_loader):
             data_time.update(time.time() - end)
 
-
             outputs, full_outputs = extract_cnn_feature(model, imgs)
 
             for fname, output, output_p1, output_p2, cls_h, cls_g, cls_l, pid in  zip(fnames, outputs, full_outputs[1], full_outputs[2], full_outputs[6], full_outputs[7], full_outputs[8], pids):
@@ -70,6 +69,7 @@ def extract_features(model, data_loader, print_freq=50):
                 l_h[fname] = cls_h
                 l_g[fname] = cls_g
                 l_l[fname] = cls_l
+
                 labels[fname] = pid
 
             batch_time.update(time.time() - end)
@@ -87,10 +87,10 @@ def extract_features(model, data_loader, print_freq=50):
 
 
 
-
 def fliphor(inputs):
     inv_idx = torch.arange(inputs.size(3)-1,-1,-1).long()  # N x C x H x W
     return inputs.index_select(3,inv_idx)
+
 
 
 def pairwise_distance(features, query=None, gallery=None):
@@ -157,6 +157,7 @@ class Evaluator(object):
     def evaluate(self, data_loader, query, gallery, cmc_flag=False, rerank=False, args=None):
 
         features, _, _, _, _, _, _ = extract_features(self.model, data_loader)
+        # features, _ = extract_feature_3(self.model, data_loader)
         distmat, query_features, gallery_features = pairwise_distance(features, query, gallery)
         results = evaluate_all(query_features, gallery_features, distmat, query=query, gallery=gallery, cmc_flag=cmc_flag)
 

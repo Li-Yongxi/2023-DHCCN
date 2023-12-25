@@ -38,7 +38,7 @@ class ClusterContrastTrainer(object):
             outputs = self._forward(inputs)
 
             loss_infoNce = self.memory(outputs, labels, epoch)
-            loss_softTriplet_list = [self.softTripletLoss(output, output, labels) for output in outputs[1:6]]
+            loss_softTriplet_list = [self.softTripletLoss(output, output, labels) for output in outputs[0:6]]
             loss_softTriplet = sum(loss_softTriplet_list) / len(loss_softTriplet_list)
 
             cls_loss_list = [self.clsLoss(output, labels) for output in outputs[6:]]

@@ -159,4 +159,5 @@ class HFE(nn.Module):
         predict = torch.sum(torch.stack([pw1*fg_p1, pw2*fg_p3]), dim=0)
 
         l_h = self.fc_id_h(predict)
+        # l_h = self.fc_id_256_1_2(predict)
         return predict, fg_p1, fg_p3, f0_p3, f1_p3, f2_p3, l_h, l_p1, l_p3, l0_p3, l1_p3, l2_p3
