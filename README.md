@@ -9,9 +9,7 @@ This repository contains the author's implementation in PyTorch for the TCSVT pa
 ## installation
 
 ```shell
-git clone https://github.com/alibaba/cluster-contrast-reid.git
-cd ClusterContrast
-python setup.py develop
+pip install -r requirements.txt
 ```
 
 ##Prepare Datasets
